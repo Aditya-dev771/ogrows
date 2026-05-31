@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OGROWs | Coming on Ethereum</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #061014;
+      --panel: rgba(255, 255, 255, 0.07);
+      --panel-strong: rgba(255, 255, 255, 0.12);
+      --blue: #65a8c7;
+      --green: #b9ff5c;
+      --white: #f7fbff;
+      --muted: #9eb3bd;
+      --black: #000;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(101, 168, 199, 0.42), transparent 38%),
+        radial-gradient(circle at 15% 35%, rgba(185, 255, 92, 0.12), transparent 28%),
+        linear-gradient(180deg, #071014 0%, #08171e 52%, #04080b 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.032) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black 0%, transparent 86%);
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .mark {
+      width: 42px;
+      height: 42px;
+      border: 10px solid var(--white);
+      outline: 4px solid var(--black);
+      box-shadow: 0 0 0 3px var(--green), 0 0 36px rgba(185, 255, 92, 0.3);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.035);
+    }
+
+    nav a:hover {
+      color: var(--white);
+      border-color: rgba(185,255,92,0.5);
+    }
+
+    .hero {
+      min-height: calc(100vh - 96px);
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 56px;
+      align-items: center;
+      padding: 38px 0 86px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green);
+      background: rgba(185,255,92,0.08);
+      border: 1px solid rgba(185,255,92,0.26);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      background: var(--green);
+      box-shadow: 0 0 18px var(--green);
+    }
+
+    h1 {
+      font-size: clamp(54px, 8vw, 116px);
+      line-height: 0.88;
+      letter-spacing: -0.075em;
+      text-transform: uppercase;
+      max-width: 760px;
+      margin-bottom: 26px;
+    }
+
+    .gradient-text {
+      color: var(--blue);
+      text-shadow: 0 0 40px rgba(101,168,199,0.35);
+    }
+
+    .lead {
+      max-width: 640px;
+      color: #c8d8df;
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.55;
+      margin-bottom: 34px;
+    }
+
+    .lead strong {
+      color: var(--white);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 950;
+      letter-spacing: 0.02em;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .primary {
+      background: var(--green);
+      color: #071014;
+      box-shadow: 0 12px 42px rgba(185,255,92,0.2);
+    }
+
+    .secondary {
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 660px;
+    }
+
+    .stat {
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: var(--panel);
+      backdrop-filter: blur(16px);
+      border-radius: 20px;
+    }
+
+    .stat b {
+      display: block;
+      font-size: 26px;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 7px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .showcase {
+      position: relative;
+      min-height: 610px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 18px;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .showcase::before {
+      content: "";
+      position: absolute;
+      width: min(72vw, 440px);
+      height: min(72vw, 440px);
+      border: 44px solid #000;
+      background: var(--blue);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 28px 100px rgba(101,168,199,0.26);
+      z-index: 0;
+    }
+
+    .og-card {
+      position: relative;
+      z-index: 2;
+      width: clamp(92px, 10vw, 138px);
+      aspect-ratio: 1;
+      border: 5px solid #000;
+      background: var(--blue);
+      box-shadow: 10px 10px 0 rgba(0,0,0,0.55), 0 18px 55px rgba(0,0,0,0.3);
+      overflow: hidden;
+      transform: translateY(0);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .og-card img,
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      image-rendering: pixelated;
+    }
+
+    .og-card:nth-child(1) { grid-column: 1; grid-row: 1; animation-delay: 0s; }
+    .og-card:nth-child(2) { grid-column: 3; grid-row: 1; animation-delay: 0.7s; }
+    .og-card:nth-child(3) { grid-column: 2; grid-row: 1; width: clamp(118px, 12vw, 165px); animation-delay: 1.1s; }
+    .og-card:nth-child(4) { grid-column: 1; grid-row: 2; animation-delay: 1.5s; }
+    .og-card:nth-child(5) { grid-column: 3; grid-row: 2; animation-delay: 2s; }
+    .og-card:nth-child(6) { grid-column: 2; grid-row: 3; width: clamp(120px, 13vw, 178px); animation-delay: 2.4s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    section {
+      padding: 56px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
+    }
+
+    .section-head p {
+      max-width: 470px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .about-card {
+      border: 1px solid rgba(255,255,255,0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.035));
+      border-radius: 28px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .about-card h2 {
+      font-size: clamp(32px, 4vw, 58px);
+      line-height: 1;
+      letter-spacing: -0.045em;
+      text-transform: uppercase;
+    }
+
+    .about-card p {
+      color: #c6d6de;
+      line-height: 1.65;
+      font-size: 18px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+      gap: 16px;
+    }
+
+    .gallery-card {
+      aspect-ratio: 1;
+      border: 4px solid #000;
+      background: var(--blue);
+      box-shadow: 7px 7px 0 rgba(0,0,0,0.48);
+      overflow: hidden;
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-8px) scale(1.035);
+      box-shadow: 10px 14px 0 rgba(0,0,0,0.55), 0 18px 50px rgba(101,168,199,0.16);
+      border-color: var(--green);
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 28px 0 40px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 850;
+    }
+
+    @media (max-width: 920px) {
+      nav {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 22px;
+      }
+
+      .showcase {
+        min-height: 520px;
+      }
+
+      .about-card {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 16px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(100% - 26px, 1180px);
+      }
+
+      header {
+        padding: 20px 0;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .showcase {
+        min-height: 420px;
+        gap: 10px;
+      }
+
+      .showcase::before {
+        border-width: 30px;
+      }
+
+      .about-card {
+        padding: 24px;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="mark"></div>
+        <span>OGROWs</span>
+      </div>
+
+      <nav>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="https://x.com/OGROWs_" target="_blank">X / Twitter</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Coming Soon on Ethereum</div>
+        <h1>OGROWs is coming on <span class="gradient-text">Ethereum</span></h1>
+        <p class="lead">
+          A collection of <strong>5,555 handmade pixel characters</strong> built with clean retro identity, bold traits, and a grow different mindset.
+        </p>
+
+        <div class="cta-row">
+          <a class="button primary" href="https://x.com/OGROWs_" target="_blank">Follow @OGROWs_</a>
+          <a class="button secondary" href="#gallery">View OGROWs</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <b>5,555</b>
+            <span>Total Supply</span>
+          </div>
+          <div class="stat">
+            <b>107</b>
+            <span>Traits</span>
+          </div>
+          <div class="stat">
+            <b>ETH</b>
+            <span>Network</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="showcase" aria-label="Featured OGROWs">
+        <div class="og-card"><img src="/3.png" alt="Featured OGROW 3" /></div>
+        <div class="og-card"><img src="/6.png" alt="Featured OGROW 6" /></div>
+        <div class="og-card"><img src="/15.png" alt="Featured OGROW 15" /></div>
+        <div class="og-card"><img src="/22.png" alt="Featured OGROW 22" /></div>
+        <div class="og-card"><img src="/30.png" alt="Featured OGROW 30" /></div>
+        <div class="og-card"><img src="/8.png" alt="Featured OGROW 8" /></div>
+      </div>
+    </main>
+
+    <section id="about">
+      <div class="about-card">
+        <h2>Handmade pixel art with a real identity.</h2>
+        <p>
+          OGROWs is built around simple but strong pixel design: readable silhouettes, bold color combinations, and collectible traits. The project is preparing to launch on Ethereum with a clean brand, a focused visual style, and a collection size of 5,555.
+        </p>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="section-head">
+        <h2>Explore OGROWs</h2>
+        <p>A preview of the handmade characters. Replace, add, or remove image numbers below based on the PNGs you keep inside your public folder.</p>
+      </div>
+
+      <div class="gallery">
+        <div class="gallery-card"><img src="/1.png" alt="OGROW 1" /></div>
+        <div class="gallery-card"><img src="/2.png" alt="OGROW 2" /></div>
+        <div class="gallery-card"><img src="/3.png" alt="OGROW 3" /></div>
+        <div class="gallery-card"><img src="/4.png" alt="OGROW 4" /></div>
+        <div class="gallery-card"><img src="/5.png" alt="OGROW 5" /></div>
+        <div class="gallery-card"><img src="/6.png" alt="OGROW 6" /></div>
+        <div class="gallery-card"><img src="/7.png" alt="OGROW 7" /></div>
+        <div class="gallery-card"><img src="/8.png" alt="OGROW 8" /></div>
+        <div class="gallery-card"><img src="/9.png" alt="OGROW 9" /></div>
+        <div class="gallery-card"><img src="/10.png" alt="OGROW 10" /></div>
+        <div class="gallery-card"><img src="/11.png" alt="OGROW 11" /></div>
+        <div class="gallery-card"><img src="/12.png" alt="OGROW 12" /></div>
+        <div class="gallery-card"><img src="/13.png" alt="OGROW 13" /></div>
+        <div class="gallery-card"><img src="/14.png" alt="OGROW 14" /></div>
+        <div class="gallery-card"><img src="/15.png" alt="OGROW 15" /></div>
+        <div class="gallery-card"><img src="/16.png" alt="OGROW 16" /></div>
+        <div class="gallery-card"><img src="/17.png" alt="OGROW 17" /></div>
+        <div class="gallery-card"><img src="/18.png" alt="OGROW 18" /></div>
+        <div class="gallery-card"><img src="/19.png" alt="OGROW 19" /></div>
+        <div class="gallery-card"><img src="/20.png" alt="OGROW 20" /></div>
+        <div class="gallery-card"><img src="/21.png" alt="OGROW 21" /></div>
+        <div class="gallery-card"><img src="/22.png" alt="OGROW 22" /></div>
+        <div class="gallery-card"><img src="/23.png" alt="OGROW 23" /></div>
+        <div class="gallery-card"><img src="/24.png" alt="OGROW 24" /></div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© OGROWs. Grow Different.</p>
+      <p><a href="https://x.com/OGROWs_" target="_blank">@OGROWs_</a></p>
+    </footer>
+  </div>
+</body>
+</html>
