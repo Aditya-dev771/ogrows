@@ -48,21 +48,28 @@ export default function Home() {
             </p>
 
             <div className="mt-9 flex flex-wrap gap-4">
-              <a
-                href="https://x.com/OGROWs_"
-                target="_blank"
-                className="rounded-2xl bg-[#b9ff5c] px-7 py-4 font-black text-black shadow-[0_0_45px_rgba(185,255,92,0.22)]"
-              >
-                Follow OGROWs
-              </a>
+  <a
+    href="https://x.com/OGROWs_"
+    target="_blank"
+    className="rounded-2xl bg-[#b9ff5c] px-7 py-4 font-black text-black shadow-[0_0_45px_rgba(185,255,92,0.22)]"
+  >
+    Follow OGROWs
+  </a>
 
-              <a
-                href="#gallery"
-                className="rounded-2xl border border-white/15 bg-white/5 px-7 py-4 font-black text-white"
-              >
-                View Gallery
-              </a>
-            </div>
+  <a
+    href="#gallery"
+    className="rounded-2xl border border-white/15 bg-white/5 px-7 py-4 font-black text-white hover:bg-white/10"
+  >
+    Explore Collection
+  </a>
+
+  <a
+    href="#about"
+    className="rounded-2xl border border-white/15 bg-white/5 px-7 py-4 font-black text-white hover:bg-white/10"
+  >
+    About
+  </a>
+</div>
 
             <div className="mt-10 grid max-w-xl grid-cols-3 gap-4">
               {[
@@ -147,7 +154,70 @@ export default function Home() {
           ))}
         </div>
       </section>
+<section
+  id="about"
+  className="mx-auto max-w-7xl px-6 py-24"
+>
+  <div className="mb-6">
+    <p className="mb-3 text-sm font-black uppercase tracking-[0.25em] text-[#b9ff5c]">
+      About OGROWs
+    </p>
 
+    <h2 className="text-5xl font-black uppercase tracking-tight md:text-7xl">
+      Grow Different
+    </h2>
+  </div>
+
+  <div className="grid gap-10 lg:grid-cols-2">
+    <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur">
+      <h3 className="mb-6 text-3xl font-black">
+        Handmade Pixel Identity
+      </h3>
+
+      <p className="mb-5 leading-8 text-white/70">
+        OGROWs is a collection of 5,555 handmade pixel characters launching on Ethereum.
+      </p>
+
+      <p className="mb-5 leading-8 text-white/70">
+        Built entirely from hand crafted artwork, OGROWs features 107 unique traits
+        combined across a distinctive pixel art style. Every character is generated
+        from a carefully designed trait system that celebrates creativity,
+        individuality, and digital identity.
+      </p>
+
+      <p className="leading-8 text-white/70">
+        Every pixel is intentionally crafted to preserve the authenticity of
+        classic pixel art while creating a modern collectible experience.
+      </p>
+    </div>
+
+    <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur">
+      <h3 className="mb-6 text-3xl font-black">
+        Collection Vision
+      </h3>
+
+      <p className="mb-5 leading-8 text-white/70">
+        OGROWs is focused on building a recognizable pixel brand around
+        originality, community, and handmade digital art.
+      </p>
+
+      <p className="mb-5 leading-8 text-white/70">
+        Rather than relying on AI generated assets, every character is rooted
+        in hand crafted artwork, preserving artistic character and visual consistency.
+      </p>
+
+      <div className="mt-8 rounded-2xl border border-[#b9ff5c]/20 bg-[#b9ff5c]/5 p-6">
+        <p className="text-2xl font-black text-[#b9ff5c]">
+          Grow Different.
+        </p>
+
+        <p className="mt-2 text-white/60">
+          5,555 characters • 107 traits • Ethereum
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
       <footer className="mx-auto flex max-w-7xl flex-col justify-between gap-4 border-t border-white/10 px-6 py-10 text-white/45 md:flex-row">
         <p>© OGROWs. Grow Different.</p>
         <a href="https://x.com/OGROWs_" target="_blank" className="text-white">
