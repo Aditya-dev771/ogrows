@@ -12,9 +12,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "OGORWs",
-  description: "No shortcuts. No AI generated. Just pure handcrafted pixel art.",
+export const metadata = {
+  title: "OGROWs",
+  description: "OGROWs on Ethereum",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
