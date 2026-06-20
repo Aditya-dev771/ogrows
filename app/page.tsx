@@ -29,7 +29,7 @@ export default function Home() {
       target="_blank"
       className="rounded-full bg-[#b9ff5c] px-5 py-3 text-sm font-black text-black"
     >
-      Follow OGROWs
+      Follow on X
     </a>
 
 <a
@@ -43,7 +43,7 @@ export default function Home() {
       href="#gallery"
       className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-black text-white hover:bg-white/10"
     >
-      Explore Collection
+      View Gallery
     </a>
 
     <a
