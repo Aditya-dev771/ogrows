@@ -38,7 +38,12 @@ export default function Home() {
     >
       Wallet Checker
     </a>
-
+<a
+  href="#roadmap"
+  className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-black text-white hover:bg-white/10"
+>
+  Roadmap
+</a>
     <a
       href="#gallery"
       className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-black text-white hover:bg-white/10"
@@ -109,6 +114,102 @@ export default function Home() {
         </div>
       </section>
 	<WalletChecker />
+
+	<section id="roadmap" className="mx-auto max-w-7xl px-6 py-24">
+  <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+    <div>
+      <p className="mb-3 text-sm font-black uppercase tracking-[0.25em] text-[#b9ff5c]">
+        Roadmap
+      </p>
+
+      <h2 className="text-5xl font-black uppercase tracking-tight md:text-7xl">
+        OGROWs Growth Framework
+      </h2>
+    </div>
+
+    <p className="max-w-md text-white/55">
+      A structured rollout focused on access, mint execution, community growth,
+      and long-term brand development.
+    </p>
+  </div>
+
+  <div className="relative">
+    <div className="absolute left-6 top-0 hidden h-full w-px bg-white/10 md:block" />
+
+    <div className="space-y-6">
+      {[
+  [
+    "01",
+    "Art + Website",
+    "The OGROWs collection artwork and official website have been completed, establishing the foundation of the project and its visual identity.",
+    ["Complete"],
+  ],
+  [
+    "02",
+    "Community Formation",
+    "Building awareness, attracting collectors, and growing the OGROWs community through organic engagement and consistent updates.",
+    ["Running"],
+  ],
+  [
+    "03",
+    "Mint on Ethereum",
+    "Launch the OGROWs collection on Ethereum through a phased mint structure including GTD, Whitelist, and Public access.",
+    ["Upcoming"],
+  ],
+  [
+    "04",
+    "Holder Layer",
+    "Introduce holder-focused initiatives including rewards, collaborations, exclusive opportunities, and community participation.",
+    ["Upcoming"],
+  ],
+  [
+    "05",
+    "Brand Expansion",
+    "Expand OGROWs beyond the initial launch by strengthening the brand, increasing visibility, and creating long-term value for holders.",
+    ["Upcoming"],
+  ],
+].map(([number, title, description, status]) => (
+        <div
+          key={title as string}
+          className="relative rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 backdrop-blur md:ml-16"
+        >
+          <div className="absolute -left-[4.7rem] top-7 hidden h-12 w-12 place-items-center rounded-full border border-[#b9ff5c]/30 bg-[#b9ff5c]/10 text-sm font-black text-[#b9ff5c] md:grid">
+            {number as string}
+          </div>
+
+          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-start">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#b9ff5c]">
+                Phase {number as string}
+              </p>
+
+              <h3 className="mt-3 text-3xl font-black uppercase">
+                {title as string}
+              </h3>
+
+              <p className="mt-4 max-w-2xl leading-7 text-white/60">
+                {description as string}
+              </p>
+            </div>
+
+            <div
+  className={`rounded-full px-4 py-2 text-xs font-black uppercase tracking-widest ${
+    status[0] === "Complete"
+      ? "bg-green-500/15 text-green-400"
+      : status[0] === "Running"
+      ? "bg-[#b9ff5c]/15 text-[#b9ff5c]"
+      : "bg-blue-500/15 text-blue-400"
+  }`}
+>
+  {status[0]}
+</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
       <section id="gallery" className="mx-auto max-w-7xl px-6 py-24">
         <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
