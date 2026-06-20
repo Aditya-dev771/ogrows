@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Papa from "papaparse";
 
 type Result = {
   wallet: string;
@@ -28,19 +27,10 @@ async function loadCsv(path: string) {
 
   const text = await res.text();
 
-  return new Promise<string[]>((resolve) => {
-    Papa.parse<string[]>(text, {
-      skipEmptyLines: true,
-      complete: (results) => {
-        const wallets = results.data
-          .flat()
-          .map((value) => value.trim().toLowerCase())
-          .filter((value) => value.startsWith("0x"));
-
-        resolve(wallets);
-      },
-    });
-  });
+  return text
+    .split(/\r?\n/)
+    .map((line) => line.trim().toLowerCase())
+    .filter((line) => line.startsWith("0x"));
 }
 
 export default function WalletChecker() {
