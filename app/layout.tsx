@@ -16,9 +16,9 @@ export const metadata = {
   title: "OGROWs",
   description: "OGROWs on Ethereum",
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
 };
 

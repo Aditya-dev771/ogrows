@@ -72,23 +72,7 @@ export default function Home() {
               unique traits, bold silhouettes, and clean retro identity.
             </p>
 
-            <div className="mt-10 grid max-w-xl grid-cols-3 gap-4">
-              {[
-                ["5,555", "Supply"],
-                ["107", "Traits"],
-                ["ETH", "Chain"],
-              ].map(([value, label]) => (
-                <div
-                  key={label}
-                  className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur"
-                >
-                  <b className="block text-3xl">{value}</b>
-                  <span className="text-xs font-black uppercase tracking-widest text-white/45">
-                    {label}
-                  </span>
-                </div>
-              ))}
-            </div>
+           
           </div>
 
           <div className="relative grid min-h-[520px] place-items-center">
