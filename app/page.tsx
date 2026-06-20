@@ -1,4 +1,5 @@
 import Image from "next/image";
+import WalletChecker from "@/components/WalletChecker";
 
 const gallery = Array.from({ length: 30 }, (_, i) => i + 1);
 const featured = [3, 6, 8, 12, 15, 30];
@@ -11,25 +12,49 @@ export default function Home() {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:42px_42px]" />
 
         <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Image
-              src="/characters/logo.png"
-              alt="OGROWs Logo"
-              width={48}
-              height={48}
-              className="border-4 border-black bg-[#65a8c7]"
-            />
-            <span className="text-xl font-black tracking-widest">OGROWs</span>
-          </div>
+  <div className="flex items-center gap-3">
+    <Image
+      src="/characters/logo.png"
+      alt="OGROWs Logo"
+      width={48}
+      height={48}
+      className="border-4 border-black bg-[#65a8c7]"
+    />
+    <span className="text-xl font-black tracking-widest">OGROWs</span>
+  </div>
 
-          <a
-            href="https://x.com/OGROWs_"
-            target="_blank"
-            className="rounded-full border border-white/15 px-5 py-2 text-sm font-bold text-white/70 hover:text-white"
-          >
-            @OGROWs_
-          </a>
-        </nav>
+  <div className="flex flex-wrap items-center justify-end gap-2">
+    <a
+      href="https://x.com/OGROWs_"
+      target="_blank"
+      className="rounded-full bg-[#b9ff5c] px-5 py-3 text-sm font-black text-black"
+    >
+      Follow OGROWs
+    </a>
+
+<a
+      href="#checker"
+      className="rounded-full border border-[#b9ff5c]/30 bg-[#b9ff5c]/10 px-5 py-3 text-sm font-black text-[#b9ff5c] hover:bg-[#b9ff5c]/20"
+    >
+      Wallet Checker
+    </a>
+
+    <a
+      href="#gallery"
+      className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-black text-white hover:bg-white/10"
+    >
+      Explore Collection
+    </a>
+
+    <a
+      href="#about"
+      className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-black text-white hover:bg-white/10"
+    >
+      About
+    </a>
+
+  </div>
+</nav>
 
         <div className="relative z-10 mx-auto grid min-h-[calc(100vh-90px)] max-w-7xl items-center gap-12 py-16 lg:grid-cols-2">
           <div>
@@ -46,30 +71,6 @@ export default function Home() {
               A collection of 5,555 handmade pixel characters built with 107
               unique traits, bold silhouettes, and clean retro identity.
             </p>
-
-            <div className="mt-9 flex flex-wrap gap-4">
-  <a
-    href="https://x.com/OGROWs_"
-    target="_blank"
-    className="rounded-2xl bg-[#b9ff5c] px-7 py-4 font-black text-black shadow-[0_0_45px_rgba(185,255,92,0.22)]"
-  >
-    Follow OGROWs
-  </a>
-
-  <a
-    href="#gallery"
-    className="rounded-2xl border border-white/15 bg-white/5 px-7 py-4 font-black text-white hover:bg-white/10"
-  >
-    Explore Collection
-  </a>
-
-  <a
-    href="#about"
-    className="rounded-2xl border border-white/15 bg-white/5 px-7 py-4 font-black text-white hover:bg-white/10"
-  >
-    About
-  </a>
-</div>
 
             <div className="mt-10 grid max-w-xl grid-cols-3 gap-4">
               {[
@@ -123,7 +124,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+	<WalletChecker />
       <section id="gallery" className="mx-auto max-w-7xl px-6 py-24">
         <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
