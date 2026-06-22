@@ -1,5 +1,6 @@
 import Image from "next/image";
 import WalletChecker from "@/components/WalletChecker";
+import GTDTaskPortal from "@/components/GTDTaskPortal";
 
 const gallery = Array.from({ length: 30 }, (_, i) => i + 1);
 const featured = [3, 6, 8, 12, 15, 30];
@@ -31,6 +32,12 @@ export default function Home() {
     >
       Follow on X
     </a>
+<a
+  href="#access"
+  className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-black text-white hover:bg-white/10"
+>
+  GTD
+</a>
 
 <a
       href="#checker"
@@ -113,6 +120,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+	<GTDTaskPortal />
 	<WalletChecker />
 
 	<section id="roadmap" className="mx-auto max-w-7xl px-6 py-24">
