@@ -159,7 +159,7 @@ export default function WalletChecker() {
 
     <div className="grid gap-4 p-6 md:grid-cols-3">
       <AccessCard title="GTD" label="Guaranteed Allocation" active={result.gtd} />
-      <AccessCard title="Whitelist" label="Priority Access" active={result.gtd || result.whitelist} />
+      <AccessCard title="Whitelist" label="Priority Access" active={result.whitelist} />
       <AccessCard title="Public" label="Open Access" active={true} />
     </div>
 
