@@ -135,7 +135,7 @@ Status: VERIFIED
         </p>
 
         <h2 className="text-5xl font-black uppercase tracking-tight md:text-7xl">
-          OGROWs Access Terminal
+          OGROWs GTD
         </h2>
 
         <p className="mt-5 max-w-2xl text-white/60">
