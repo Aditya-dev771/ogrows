@@ -1,6 +1,4 @@
 import Image from "next/image";
-import WalletChecker from "@/components/WalletChecker";
-import GTDTaskPortal from "@/components/GTDTaskPortal";
 
 const gallery = Array.from({ length: 30 }, (_, i) => i + 1);
 const featured = [3, 6, 8, 12, 15, 30];
@@ -32,19 +30,7 @@ export default function Home() {
     >
       Follow on X
     </a>
-<a
-  href="#access"
-  className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-black text-white hover:bg-white/10"
->
-  GTD
-</a>
 
-<a
-      href="#checker"
-      className="rounded-full border border-[#b9ff5c]/30 bg-[#b9ff5c]/10 px-5 py-3 text-sm font-black text-[#b9ff5c] hover:bg-[#b9ff5c]/20"
-    >
-      Wallet Checker
-    </a>
 <a
   href="#roadmap"
   className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-black text-white hover:bg-white/10"
@@ -71,12 +57,11 @@ export default function Home() {
         <div className="relative z-10 mx-auto grid min-h-[calc(100vh-90px)] max-w-7xl items-center gap-12 py-16 lg:grid-cols-2">
           <div>
             <p className="mb-5 inline-block rounded-full border border-[#b9ff5c]/30 bg-[#b9ff5c]/10 px-4 py-2 text-sm font-black uppercase tracking-[0.25em] text-[#b9ff5c]">
-              Coming Soon on Ethereum
+              Minting on 25 June
             </p>
 
             <h1 className="text-6xl font-black uppercase leading-[0.9] tracking-tight md:text-8xl">
-              OGROWs is coming on{" "}
-              <span className="text-[#65a8c7]">Ethereum</span>
+              OGROWs{" "}
             </h1>
 
             <p className="mt-7 max-w-xl text-lg leading-8 text-white/65 md:text-xl">
@@ -120,8 +105,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-	<GTDTaskPortal />
-	<WalletChecker />
 
 	<section id="roadmap" className="mx-auto max-w-7xl px-6 py-24">
   <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
