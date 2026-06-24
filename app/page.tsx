@@ -1,4 +1,5 @@
 import Image from "next/image";
+import MintCountdown from "@/components/MintCountdown";
 
 const gallery = Array.from({ length: 30 }, (_, i) => i + 1);
 const featured = [3, 6, 8, 12, 15, 30];
@@ -23,7 +24,14 @@ export default function Home() {
   </div>
 
   <div className="flex flex-wrap items-center justify-end gap-2">
-    <a
+<a
+  href="https://opensea.io/collection/ogrow/overview"
+  target="_blank"
+  className="rounded-full bg-[#b9ff5c] px-5 py-3 text-sm font-black text-black"
+>
+  Mint
+</a>    
+<a
       href="https://x.com/OGROWs_"
       target="_blank"
       className="rounded-full bg-[#b9ff5c] px-5 py-3 text-sm font-black text-black"
@@ -53,7 +61,7 @@ export default function Home() {
 
   </div>
 </nav>
-
+<MintCountdown />
         <div className="relative z-10 mx-auto grid min-h-[calc(100vh-90px)] max-w-7xl items-center gap-12 py-16 lg:grid-cols-2">
           <div>
             <p className="mb-5 inline-block rounded-full border border-[#b9ff5c]/30 bg-[#b9ff5c]/10 px-4 py-2 text-sm font-black uppercase tracking-[0.25em] text-[#b9ff5c]">
