@@ -60,13 +60,15 @@ export default function MintCountdown() {
           June 25, 2026 • 10:30 AM UTC
         </p>
 
-        <a
-          href="https://opensea.io/collection/ogrow/overview"
-          target="_blank"
-          className="mt-8 inline-flex rounded-2xl bg-[#b9ff5c] px-8 py-4 font-black text-black"
-        >
-          Mint On OpenSea
-        </a>
+        <button
+  type="button"
+  onClick={() => {
+    window.open("https://opensea.io/collection/ogrow", "_blank", "noopener,noreferrer");
+  }}
+  className="relative z-50 mt-8 rounded-2xl bg-[#b9ff5c] px-8 py-4 font-black text-black"
+>
+  Mint On OpenSea
+</button>
       </div>
     </section>
   );
