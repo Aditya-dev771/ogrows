@@ -41,24 +41,6 @@ export default function MintCountdown() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-20">
       <div className="rounded-[2rem] border border-[#b9ff5c]/20 bg-[#b9ff5c]/5 p-10 text-center">
-        <p className="text-sm font-black uppercase tracking-[0.3em] text-[#b9ff5c]">
-          OGROWs Mint
-        </p>
-
-        <h2 className="mt-4 text-5xl font-black uppercase">
-          Mint Starts In
-        </h2>
-
-        <div className="mt-8 grid grid-cols-4 gap-4">
-          <TimeBox value={timeLeft.days} label="Days" />
-          <TimeBox value={timeLeft.hours} label="Hours" />
-          <TimeBox value={timeLeft.minutes} label="Minutes" />
-          <TimeBox value={timeLeft.seconds} label="Seconds" />
-        </div>
-
-        <p className="mt-8 text-white/60">
-          June 25, 2026 • 10:30 AM UTC
-        </p>
 
         <button
   type="button"
@@ -67,7 +49,7 @@ export default function MintCountdown() {
   }}
   className="relative z-50 mt-8 rounded-2xl bg-[#b9ff5c] px-8 py-4 font-black text-black"
 >
-  Mint On OpenSea
+  Mint Is Live
 </button>
       </div>
     </section>
